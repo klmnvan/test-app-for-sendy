@@ -2,6 +2,7 @@ package com.example.sendyapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -12,7 +13,8 @@ data class Typography(
     val titleScreen: TextStyle = TextStyle(),
     val tittleField: TextStyle = TextStyle(),
     val textHint: TextStyle = TextStyle(),
-    val textInField: TextStyle = TextStyle()
+    val textInField: TextStyle = TextStyle(),
+    val textButton: TextStyle = TextStyle()
 )
 
 val typography = Typography(
@@ -24,22 +26,24 @@ val typography = Typography(
         color = Black
     ),
     tittleField = TextStyle(
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Medium,
         fontSize = 20.sp,
-        textAlign = TextAlign.Center,
         color = Black
     ),
     textHint = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        textAlign = TextAlign.Center,
         color = Gray
     ),
     textInField = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        textAlign = TextAlign.Center,
         color = Black
+    ),
+    textButton = TextStyle(
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        color = Color.White
     ),
 )
 
