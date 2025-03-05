@@ -79,4 +79,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hilt_android_version")
     kapt("com.google.dagger:hilt-compiler:$hilt_android_version")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //sdk sendy app
+    implementation(files("src/main/libs/sendy_app_sdk.aar"))
 }
+

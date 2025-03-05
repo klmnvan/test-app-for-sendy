@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import com.example.sendyapp.presentation.navigation.Navigation
 import com.example.sendyapp.presentation.ui.theme.SendyAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import land.sendy.pfe_sdk.api.API
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
