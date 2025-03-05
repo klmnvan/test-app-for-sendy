@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.20"
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,4 +69,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // навигация
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    // hilt
+    val hilt_android_version = "2.48"
+    implementation("com.google.dagger:hilt-android:$hilt_android_version")
+    kapt("com.google.dagger:hilt-compiler:$hilt_android_version")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 }
