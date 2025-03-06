@@ -23,7 +23,7 @@
 - Предусмотрено обновление страницы (при обновлении отправляется запрос на получение пользовательского соглашения на случай, если пользователь не был подключён к интернету)
 - По нажатию на кнопку "Продолжить", при условии прохождения валидации номера телефона, отправляется запрос на отправление кода по смс на введённый номер телефона. 
 
-<div style="text-align: center;">
+<div align="center">
     <img src="./screenshots/auth_screen.jpg" height="300" style="display: inline-block;margin: 0 10px;">
     <img src="./screenshots/auth_screen_open_offer.jpg" height="300" style="display: inline-block;">
 </div>
@@ -33,7 +33,7 @@
 - По нажатию на кнопку "Продолжить", при условии, что код заполнен, отправляется запрос на проверку кода.
 - Кнопка назад
 
-<div style="text-align: center;">
+<div align="center">
     <img src="./screenshots/input_code_screen.jpg" height="300" style="display: inline-block;margin:">
     <img src="./screenshots/input_code_correct_code_event.jpg" height="300" style="display: inline-block;margin: 0 10px;">
     <img src="./screenshots/input_code_uncorrect_code_event.jpg" height="300" style="display: inline-block;">
