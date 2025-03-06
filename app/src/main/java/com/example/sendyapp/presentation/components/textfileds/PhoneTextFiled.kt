@@ -29,8 +29,8 @@ fun PhoneTextFiled(value: String, placeholder: String, onValueChange: (String) -
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.colors(
             unfocusedTextColor = SendyAppTheme.colors.textTittle,
-            unfocusedContainerColor = SendyAppTheme.colors.container.copy(alpha = 0.2f),
-            focusedContainerColor = SendyAppTheme.colors.container.copy(alpha = 0.2f),
+            unfocusedContainerColor = SendyAppTheme.colors.container.copy(alpha = 0.15f),
+            focusedContainerColor = SendyAppTheme.colors.container.copy(alpha = 0.15f),
             focusedTextColor = SendyAppTheme.colors.textTittle,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
