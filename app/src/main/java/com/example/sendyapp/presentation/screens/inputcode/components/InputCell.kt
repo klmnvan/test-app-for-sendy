@@ -15,10 +15,10 @@ import androidx.compose.ui.unit.dp
 import com.example.sendyapp.presentation.ui.theme.SendyAppTheme
 
 @Composable
-fun InputCell(value: String, focusRequester: FocusRequester, onValue: (String) -> Unit) {
+fun InputCell(value: String, focusRequester: FocusRequester, onValueChange: (String) -> Unit) {
     OutlinedTextField(
         value = value,
-        onValueChange = { onValue(it)},
+        onValueChange = { onValueChange(it.filter { it.isDigit() })},
         singleLine = true,
         maxLines = 1, shape = RoundedCornerShape(5.dp),
         modifier = Modifier
