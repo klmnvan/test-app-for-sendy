@@ -2,14 +2,22 @@ package com.example.sendyapp.presentation.components.textfileds
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -17,14 +25,23 @@ import com.example.sendyapp.presentation.ui.theme.SendyAppTheme
 import kotlin.math.absoluteValue
 
 @Composable
-fun PhoneTextFiled(value: String, placeholder: String, onValueChange: (String) -> Unit) {
-    val mask = MaskVisualTransformation("+7 ХХХ ХХХ ХХ ХХ")
+fun PhoneTextField(value: String, placeholder: String, onValueChange: (String) -> Unit) {
+    val mask = MaskVisualTransformation("Х ХХХ ХХХ ХХ ХХ")
+    var textFieldValue by remember { mutableStateOf(TextFieldValue(value)) }
+    val regex = Regex("^(7|8)[0-9]{0,10}$")
 
     TextField(
-        value = value,
-        onValueChange = { it ->
-            if(it.toCharArray().size <= 10)
-            onValueChange(it.filter { it.isDigit() })
+        value = textFieldValue,
+        onValueChange = { newValue ->
+            val filteredText = newValue.text.filter { it.isDigit() }
+            if (regex.matches(filteredText) || filteredText.isEmpty()) {
+                textFieldValue = newValue.copy(
+                    text = filteredText
+                )
+                onValueChange(filteredText)
+            } else {
+                textFieldValue = textFieldValue.copy(text = value)
+            }
         },
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.colors(
@@ -42,9 +59,12 @@ fun PhoneTextFiled(value: String, placeholder: String, onValueChange: (String) -
         placeholder = {
             Text(
                 placeholder,
-                style = SendyAppTheme.typography.textInField
+                style = SendyAppTheme.typography.textHint
             )
         },
+        keyboardOptions = KeyboardOptions.Default.copy(
+            keyboardType = KeyboardType.Number
+        ),
         visualTransformation = mask,
         textStyle = SendyAppTheme.typography.textInField
     )

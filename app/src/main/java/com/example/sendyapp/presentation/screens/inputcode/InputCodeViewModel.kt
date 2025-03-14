@@ -42,7 +42,7 @@ class InputCodeViewModel @Inject constructor(
     fun checkCode(code: String) {
         if (isInternetAvailable(context)) {
             if(code != "" && code.toCharArray().size == 6) {
-                API.outLog("Проверка кода")
+                API.outLog("Проверка кода: ${code}")
                 val runResult = API.api.activateWllet(context, code, "sms", checkCodeCallback)
                 if (runResult != null && runResult.hasError()) {
                     API.outLog("Запрос на проверку кода не был запущен:\r\n" + runResult.toString());

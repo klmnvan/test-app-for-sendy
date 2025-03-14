@@ -39,7 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.sendyapp.presentation.components.buttons.ButtonFillWidth
 import com.example.sendyapp.presentation.components.spacers.SpacerHeight
-import com.example.sendyapp.presentation.components.textfileds.PhoneTextFiled
+import com.example.sendyapp.presentation.components.textfileds.PhoneTextField
 import com.example.sendyapp.presentation.screens.auth.components.OpenDialogOffer
 import com.example.sendyapp.presentation.ui.theme.SendyAppTheme
 import kotlinx.coroutines.delay
@@ -87,7 +87,7 @@ fun Auth(controller: NavHostController, pullToRefreshState: PullToRefreshState, 
             SpacerHeight(40.dp)
             Text("Номер телефона", style = SendyAppTheme.typography.tittleField)
             SpacerHeight(12.dp)
-            PhoneTextFiled(state.value.phoneNumber, "+7 ХХХ ХХХ ХХ ХХ") {
+            PhoneTextField(state.value.phoneNumber, "(7\\8) XXX XXX XX XX") {
                 viewModel.stateValue = state.value.copy(phoneNumber = it)
             }
             SpacerHeight(12.dp)
@@ -100,13 +100,8 @@ fun Auth(controller: NavHostController, pullToRefreshState: PullToRefreshState, 
                         checkedColor = SendyAppTheme.colors.primary
                     )
                 )
-                ClickableText(text = buildAnnotatedString {
-                    append("Я согласен с ")
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = SendyAppTheme.colors.primary)) {
-                        append("условиями пользователского соглашения")
-                    }
-                }) {
-                    dialogIsOpen = true
+                ClickableText(text = AnnotatedString("Я согласен с условиями пользователского соглашения")) {
+                     viewModel.stateValue = state.value.copy(offerIsAgree = !viewModel.stateValue.offerIsAgree)
                 }
             }
             SpacerHeight(12.dp)

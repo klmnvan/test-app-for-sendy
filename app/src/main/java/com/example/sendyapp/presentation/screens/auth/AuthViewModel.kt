@@ -70,13 +70,13 @@ class AuthViewModel @Inject constructor(
     /** Отправка кода по номеру телефона **/
     fun sendCode(controller: NavHostController) {
         try {
-            if(stateValue.phoneNumber != "" &&  stateValue.phoneNumber.length == 10) {
+            if(stateValue.phoneNumber != "" &&  stateValue.phoneNumber.length == 11) {
                 if(stateValue.offerIsAgree) {
                     if(isInternetAvailable(context)) {
-                        API.outLog("Отправка кода по номеру телефона 7${stateValue.phoneNumber}")
-                        val runResult = API.api.loginAtAuth(context, "7" + stateValue.phoneNumber, loginAtAuthCallback)
+                        API.outLog("Отправка кода по номеру телефона ${stateValue.phoneNumber}")
+                        val runResult = API.api.loginAtAuth(context, stateValue.phoneNumber, loginAtAuthCallback)
                         if (runResult != null && runResult.hasError()) {
-                            API.outLog("Запрос на отправку кода по номеру телефона 7${stateValue.phoneNumber} не был запущен:\r\n" + runResult.toString());
+                            API.outLog("Запрос на отправку кода по номеру телефона ${stateValue.phoneNumber} не был запущен:\r\n" + runResult.toString());
                         }
                         else {
                             controller.navigate(NavigationRoutes.INPUT_CODE) {

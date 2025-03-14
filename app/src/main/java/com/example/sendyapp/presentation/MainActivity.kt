@@ -13,10 +13,12 @@ import com.example.sendyapp.presentation.components.pullrefresh.CustomPullToRefr
 import com.example.sendyapp.presentation.navigation.Navigation
 import com.example.sendyapp.presentation.ui.theme.SendyAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import land.sendy.pfe_sdk.activies.MasterActivity
 import land.sendy.pfe_sdk.api.API
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,4 +39,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }
